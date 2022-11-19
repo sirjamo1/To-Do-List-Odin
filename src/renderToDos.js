@@ -96,6 +96,7 @@ const addRemoveLineThrough = (toDoCard, projectLibrary, toDoId) => {
 
 const renderProjects = (projects) => {
     let activeIdCount = 0;
+    console.log("hey")
     for (let i = 0; i < projects.length; i++) {
         if (projects[i].projectId == activeProjectId) {
             activeIdCount += 1;
@@ -108,10 +109,12 @@ const renderProjects = (projects) => {
     const projectCardContainer = document.getElementById(
         "project-card-container"
     );
+    console.log(appContainer)
+    if (projectCardContainer !== null) {
     while (projectCardContainer.firstChild) {
         projectCardContainer.removeChild(projectCardContainer.lastChild);
-    }
-
+    }}
+    console.log(projects)
     projects.forEach((project) => {
         const projectCard = document.createElement("div");
         projectCardContainer.appendChild(projectCard);
