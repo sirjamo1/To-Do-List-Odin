@@ -26,7 +26,7 @@ const checkForStorage = () => {
                     projectId: 123457,
                     toDos: [
                         {
-                            title: "To Do 1",
+                            title: "To Do 2",
                             description: "description of what to do",
                             dueDate: "2022-12-17",
                             priority: "Low",

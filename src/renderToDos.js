@@ -109,12 +109,9 @@ const renderProjects = (projects) => {
     const projectCardContainer = document.getElementById(
         "project-card-container"
     );
-    console.log(appContainer)
-    if (projectCardContainer !== null) {
     while (projectCardContainer.firstChild) {
         projectCardContainer.removeChild(projectCardContainer.lastChild);
-    }}
-    console.log(projects)
+}
     projects.forEach((project) => {
         const projectCard = document.createElement("div");
         projectCardContainer.appendChild(projectCard);
@@ -128,7 +125,7 @@ const renderProjects = (projects) => {
             let projectLibrary = JSON.parse(
                 localStorage.getItem("projectLibrary")
             );
-            renderProjects(projects);
+            // renderProjects(projects);
             for (let i = 0; i < projectLibrary.length; i++) {
                 if (projectLibrary[i].projectId == activeProjectId) {
                     renderToDos(projectLibrary[i].toDos);
