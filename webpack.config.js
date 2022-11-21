@@ -5,12 +5,12 @@ module.exports = {
     mode: "development",
     entry: {
         index: "./src/index.js",
-        print: "./src/print.js",
     },
     devtool: "inline-source-map",
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Output Management",
+            title: "To Do List",
+            favicon: "./src/assets/favicon/to-do-list-favicon.ico",
         }),
     ],
     output: {

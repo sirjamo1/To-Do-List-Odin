@@ -24,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.35);
 }
 #sidebar-logo {
     width: 40%;
@@ -88,10 +89,7 @@ body {
     z-index: 30;
     border-bottom: rgba(255, 255, 255, 0.45) 1px solid;
 }
-.project-card:hover {
-    /*👉    background-color: #ffff0079;👈*/
-   /*👉 color: white;👈*/
-}
+
 .selected-project {
     transition: 0.5s ease-out;
     background-color: #ffff00;
@@ -130,6 +128,9 @@ body {
     transform: translateX(30px);
     opacity: 1;
     z-index: 3;
+    box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.35);
+-webkit-box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.35);
 }
 .edit-and-trash-container {
     display: flex;
@@ -202,13 +203,13 @@ body {
 
 /*👉Cards👈*/
 #to-do-container {
-    height: 100vh;
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     overflow-y: scroll;
     justify-items: center;
+    padding: 20px ;
 }
 
 .to-do-card {
@@ -221,18 +222,21 @@ body {
     display: grid;
     border-radius: 6px;
     border: 5px solid #ffff00;
+    box-shadow: 4px 2px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 4px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 2px 5px 0px rgba(0,0,0,0.75);
 }
 .line-through {
     text-decoration: line-through;
 }
 .priority-high {
-    background-color: red;
+    color: red;
 }
 .priority-medium {
-    background-color: yellow;
+    color: yellow;
 }
 .priority-low {
-    background-color: green;
+    color: green;
 }
 
 .to-do-icon-container {
@@ -266,7 +270,14 @@ body {
     border: 5px solid #ffff00;
     padding: 10px;
 }
+#form-container > label {
+    margin-top: 6px;
+    margin-bottom: -10px;
+}
 #form-submit-button {
+    margin-top: 16px;
+    background-color: rgb(66, 103, 178);
+    border-radius: 6px;
 }
 #cancel-button {
     position: absolute;

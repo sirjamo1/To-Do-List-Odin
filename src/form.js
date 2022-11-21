@@ -29,6 +29,9 @@ export default function form(appContainer) {
     formDueDateInput.type = "date";
     formDueDateInput.id = "due-date";
     formContainer.appendChild(formDueDateInput);
+    const fromPriorityLabel = document.createElement("label")
+    fromPriorityLabel.innerHTML = "Priority level"
+    formContainer.appendChild(fromPriorityLabel)
     const formPrioritySelect = document.createElement("select");
     formPrioritySelect.id = "priority";
     formPrioritySelect.name = "priority";

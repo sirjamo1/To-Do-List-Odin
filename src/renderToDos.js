@@ -125,7 +125,6 @@ const renderProjects = (projects) => {
             let projectLibrary = JSON.parse(
                 localStorage.getItem("projectLibrary")
             );
-            // renderProjects(projects);
             for (let i = 0; i < projectLibrary.length; i++) {
                 if (projectLibrary[i].projectId == activeProjectId) {
                     renderToDos(projectLibrary[i].toDos);

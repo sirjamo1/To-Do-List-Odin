@@ -2,7 +2,6 @@ import { renderProjects, renderToDos } from "./renderToDos";
 const checkForStorage = () => {
     if (typeof Storage !== "undefined") {
         console.log("Code for localStorage/sessionStorage.");
-        // need to make local storage render on open
         let projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
         if (projectLibrary.length < 1) {
             projectLibrary = [
@@ -18,6 +17,24 @@ const checkForStorage = () => {
                             projectId: 123456,
                             toDoId: "123456-654321",
                             completed: true,
+                        },
+                        {
+                            title: "To Do 1",
+                            description: "description of what to do",
+                            dueDate: "2022-11-13",
+                            priority: "Medium",
+                            projectId: 123456,
+                            toDoId: "123456-654322",
+                            completed: false,
+                        },
+                        {
+                            title: "To Do 1",
+                            description: "description of what to do",
+                            dueDate: "2022-10-07",
+                            priority: "High",
+                            projectId: 123456,
+                            toDoId: "123456-654323",
+                            completed: false,
                         },
                     ],
                 },
@@ -41,10 +58,6 @@ const checkForStorage = () => {
                 "projectLibrary",
                 JSON.stringify(projectLibrary)
             );
-            // console.log(projectLibrary[0])
-            // renderProjects(projectLibrary);
-
-            console.log(projectLibrary[0]);
             renderProjects(projectLibrary);
             renderToDos(projectLibrary[0].toDos)
         } else {
