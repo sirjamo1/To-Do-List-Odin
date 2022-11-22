@@ -29,7 +29,6 @@ const yesOrNoPopUp = (
     yesButton.innerHTML = "Yes";
     yesButton.onclick = () => {
         console.log(cardContainer, card);
-        // cardContainer.removeChild(card);
         parentNode.removeChild(opacityContainer);
         if (!project.toDos) {
             for (let i = 0; i < projectLibrary.length; i++) {
@@ -41,6 +40,7 @@ const yesOrNoPopUp = (
                             "projectLibrary",
                             JSON.stringify(projectLibrary)
                         );
+
                         renderToDos(projectLibrary[i].toDos);
                     }
                 }
@@ -59,7 +59,6 @@ const yesOrNoPopUp = (
             renderToDos(projectLibrary[0].toDos);
         }
     };
-    //NEED TO: delete not working on toDo deletion
     popUpContainer.appendChild(yesButton);
     const noButton = document.createElement("button");
     noButton.classList.add("pop-up-no");

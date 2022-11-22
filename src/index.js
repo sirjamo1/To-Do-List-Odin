@@ -2,6 +2,7 @@ import _ from "lodash";
 import "./style.css";
 import sidebar from "./sidebar";
 import { checkForStorage } from "./checkForStorage";
+import { renderProjects } from "./renderToDos";
 
 function component() {
     const appContainer = document.createElement("div");
@@ -15,5 +16,12 @@ function component() {
 }
 
 document.body.appendChild(component());
-checkForStorage()
-
+checkForStorage();
+window.addEventListener(
+    "resize",
+    () => {
+        let projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
+        renderProjects(projectLibrary);
+    },
+    true
+);

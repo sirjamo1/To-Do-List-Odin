@@ -6,23 +6,33 @@ import { yesOrNoPopUp } from "./yesOrNoPopUp";
 import form from "./form";
 import editForm from "./editForm";
 
-
 let activeProjectId = "";
-function renderToDos(toDoArray) {
+function renderToDos(toDoArray, newEditDelete, newEditDeleteId) {
+    console.log(newEditDeleteId);
     const appContainer = document.getElementById("app-container");
     const toDoContainer = document.getElementById("to-do-container");
     while (toDoContainer.firstChild) {
         toDoContainer.removeChild(toDoContainer.lastChild);
     }
-
+    console.log(toDoArray.length);
     toDoArray.forEach((toDo) => {
+        console.log(toDoArray);
+        console.log(toDo);
         const toDoCard = document.createElement("div");
-        console.log(toDo.completed);
         toDoCard.classList =
             toDo.completed === false ? "to-do-card" : "to-do-card line-through";
-        console.log(toDo.classList);
+        if (
+            (newEditDelete == "new" && newEditDeleteId == toDo.toDoId) ||
+            (newEditDelete == "edit" && newEditDeleteId == toDo.toDoId)
+        ) {
+            toDoCard.style.animation = "add-edit forwards 1.5s linear";
+        }
         const title = document.createElement("h1");
-        title.innerHTML = toDo.title;
+        console.log(toDo.title.length);
+        title.innerHTML =
+            toDo.title.length < 10
+                ? toDo.title
+                : `${toDo.title.substring(0, 10)}...`;
         toDoCard.appendChild(title);
         const toDoDescription = document.createElement("h4");
         toDoDescription.innerHTML = toDo.description;
@@ -94,9 +104,8 @@ const addRemoveLineThrough = (toDoCard, projectLibrary, toDoId) => {
     console.log({ toDoCard }, { projectLibrary }, { toDoId });
 };
 
-const renderProjects = (projects) => {
+const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
     let activeIdCount = 0;
-    console.log("hey")
     for (let i = 0; i < projects.length; i++) {
         if (projects[i].projectId == activeProjectId) {
             activeIdCount += 1;
@@ -111,7 +120,7 @@ const renderProjects = (projects) => {
     );
     while (projectCardContainer.firstChild) {
         projectCardContainer.removeChild(projectCardContainer.lastChild);
-}
+    }
     projects.forEach((project) => {
         const projectCard = document.createElement("div");
         projectCardContainer.appendChild(projectCard);
@@ -138,11 +147,22 @@ const renderProjects = (projects) => {
                 ? "selected-project project-card"
                 : "project-card";
 
+        if (
+            (newEditDelete == "new" && newEditDeleteId == project.projectId) ||
+            (newEditDelete == "edit" && newEditDeleteId == project.projectId)
+        ) {
+            projectCard.style.animation = "add-edit forwards 1.5s linear";
+        }
+
         const projectCardTitleContainer = document.createElement("div");
         projectCardTitleContainer.classList.add("project-card-title-container");
         const projectCardTitle = document.createElement("h3");
         projectCardTitleContainer.appendChild(projectCardTitle);
-        projectCardTitle.innerHTML = project.projectName;
+        let desiredNameLength = document.body.offsetWidth / 60;
+        projectCardTitle.innerHTML =
+            project.projectName.length < desiredNameLength
+                ? project.projectName
+                : `${project.projectName.substring(0, desiredNameLength)}...`;
         projectCard.appendChild(projectCardTitleContainer);
         const iconContainer = document.createElement("div");
         iconContainer.classList =
@@ -217,15 +237,16 @@ const editProjectName = (
     saveChanges.onclick = (event) => {
         event.stopPropagation();
         for (let i = 0; i < projectLibrary.length; i++) {
-            if (projectLibrary[i].projectId === project.projectId)
+            if (projectLibrary[i].projectId === project.projectId) {
                 projectLibrary[i].projectName = editNameInput.value;
-            activeProjectId = projectLibrary[i];
+            activeProjectId = projectLibrary[i].projectId;
             localStorage.setItem(
                 "projectLibrary",
                 JSON.stringify(projectLibrary)
             );
-            renderProjects(projectLibrary);
+            renderProjects(projectLibrary, "edit", projectLibrary[i].projectId);
         }
+    }
     };
     editNameContainer.appendChild(editNameInput);
     editNameContainer.appendChild(saveChanges);
@@ -261,7 +282,11 @@ const getEditFormData = (
                     console.log(projectLibrary[i].toDos[j]);
                     if (projectLibrary[i].toDos[j].toDoId == toDoId) {
                         Object.assign(projectLibrary[i].toDos[j], newToDo);
-                        renderToDos(projectLibrary[i].toDos);
+                        renderToDos(
+                            projectLibrary[i].toDos,
+                            "edit",
+                            newToDo.toDoId
+                        );
                     }
                 }
             }
@@ -303,7 +328,7 @@ const getFormData = (title, description, dueDate, priority) => {
                 );
                 projectLibrary[i].toDos.push(newToDo);
 
-                renderToDos(projectLibrary[i].toDos);
+                renderToDos(projectLibrary[i].toDos, "new", newToDo.toDoId);
             }
         }
         localStorage.setItem("projectLibrary", JSON.stringify(projectLibrary));
@@ -325,7 +350,7 @@ const getProjectNameData = (projectName) => {
         projectLibrary.unshift(newProject);
         localStorage.setItem("projectLibrary", JSON.stringify(projectLibrary));
         activeProjectId = newProject.projectId;
-        renderProjects(projectLibrary);
+        renderProjects(projectLibrary, "new", newProject.projectId);
         renderToDos(newProject.toDos);
     }
 };

@@ -42,7 +42,7 @@ body {
 #sidebar-plus-button {
     width: 15%;
     cursor: pointer;
-    min-width: 30px;
+    min-width: 25px;
     border-radius: 50%;
 }
 #sidebar-plus-button:hover {
@@ -57,9 +57,9 @@ body {
 
 .add-project-text {
     cursor: pointer;
-    width: 60%;
     text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
 }
+
 .add-project-input {
     width: 60%;
     height: 80%;
@@ -91,7 +91,8 @@ body {
     z-index: 30;
     border-bottom: rgba(255, 255, 255, 0.45) 1px solid;
 }
-
+/*👉NEED TO: fix sidebar pop out for all screen sizes (maybe align it to the right)
+👈*/
 .selected-project {
     transition: 0.5s ease-out;
     background-color: #ffff00;
@@ -100,6 +101,7 @@ body {
 .project-card-title-container {
     min-width: 30%;
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
 }
@@ -107,12 +109,13 @@ body {
     margin-left: 6px;
     width: 90%;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: clip;
     cursor: alias;
     align-self: center;
 }
+@media screen and (max-width: 800px) {
 
+}
 .icon-container {
     height: 100%;
     position: relative;
@@ -139,6 +142,36 @@ body {
     height: 100%;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+@keyframes add-edit {
+      0% {
+    opacity: 0;
+   }
+   33% {
+    opacity: 1;
+   }
+   66% {
+    opacity: 0;
+   }
+   100% {
+    opacity: 1;
+   }
+}
+@keyframes delete {
+      0% {
+    opacity: 1;
+   }
+   33% {
+    opacity: 0;
+   }
+   66% {
+    opacity: 1;
+   }
+   100% {
+    opacity: 0;
+
+   }
 }
 .edit-and-trash-container > img {
     border-radius: 6px;

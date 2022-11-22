@@ -3,7 +3,6 @@ import plusButton from "./assets/icons/plus-button.png";
 import { getProjectNameData, renderProjects } from "./renderToDos";
 
 export default function sidebar() {
-    console.log("hello")
     const sidebarContainer = document.createElement("div");
     sidebarContainer.id = "sidebar-container";
     const toDoLogoImg = new Image();
@@ -24,10 +23,7 @@ export default function sidebar() {
     const projectCardContainer = document.createElement("div");
     projectCardContainer.id = "project-card-container";
     sidebarContainer.appendChild(projectCardContainer);
-    let projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
-    console.log(projectLibrary)
    
-    //  renderProjects(projectLibrary)
 
     return sidebarContainer;
 }
