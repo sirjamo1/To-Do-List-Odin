@@ -83,6 +83,8 @@ body {
 /*👉SIDEBAR---Project-Cards👈*/
 #project-card-container {
     width: 100%;
+/* overflow-x:visible; */
+direction: rtl;
 }
 .project-card {
     justify-content: space-between;
@@ -90,8 +92,9 @@ body {
     height: 50px;
     z-index: 30;
     border-bottom: rgba(255, 255, 255, 0.45) 1px solid;
+    direction: ltr;
 }
-/*👉NEED TO: fix sidebar pop out for all screen sizes (maybe align it to the right)
+/*👉NEED TO: if there are too many projects, it creates a scroll bar( need to make it so there are multiply pages if projects go over)
 👈*/
 .selected-project {
     transition: 0.5s ease-out;
@@ -114,7 +117,6 @@ body {
     align-self: center;
 }
 @media screen and (max-width: 800px) {
-
 }
 .icon-container {
     height: 100%;
@@ -137,6 +139,12 @@ body {
     -webkit-box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.35);
     -moz-box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.35);
 }
+.icon-container-selected-scroll {
+    transition: 0.5s ease-out;
+    transform: translateX(0px);
+    opacity: 1;
+    z-index: 3;
+}
 .edit-and-trash-container {
     display: flex;
     height: 100%;
@@ -145,33 +153,32 @@ body {
 }
 
 @keyframes add-edit {
-      0% {
-    opacity: 0;
-   }
-   33% {
-    opacity: 1;
-   }
-   66% {
-    opacity: 0;
-   }
-   100% {
-    opacity: 1;
-   }
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 1;
+    }
+    66% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 @keyframes delete {
-      0% {
-    opacity: 1;
-   }
-   33% {
-    opacity: 0;
-   }
-   66% {
-    opacity: 1;
-   }
-   100% {
-    opacity: 0;
-
-   }
+    0% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 0;
+    }
+    66% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 .edit-and-trash-container > img {
     border-radius: 6px;
@@ -378,4 +385,27 @@ body {
 }
 .pop-up-no {
     background-color: red;
+}
+
+/*👉 CUSTOM SCROLL BAR👈*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
 }

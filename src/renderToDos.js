@@ -105,6 +105,7 @@ const addRemoveLineThrough = (toDoCard, projectLibrary, toDoId) => {
 };
 
 const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
+    console.log(projects.length);
     let activeIdCount = 0;
     for (let i = 0; i < projects.length; i++) {
         if (projects[i].projectId == activeProjectId) {
@@ -118,6 +119,11 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
     const projectCardContainer = document.getElementById(
         "project-card-container"
     );
+    if (projects.length > 8) {
+        projectCardContainer.style.overflowX = "hidden";
+    } else {
+        projectCardContainer.style.overflowX = "visible";
+    }
     while (projectCardContainer.firstChild) {
         projectCardContainer.removeChild(projectCardContainer.lastChild);
     }
@@ -128,7 +134,24 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
             removeClass(projectCardContainer, "selected-project");
             Array.from(
                 document.querySelectorAll(".icon-container-selected")
-            ).forEach((el) => el.classList.remove("icon-container-selected"));
+            ).forEach((el) =>
+                el.classList.remove(
+                    "icon-container-selected"
+                )
+            );
+              Array.from(
+                  document.querySelectorAll(".icon-container-selected-scroll")
+              ).forEach((el) =>
+                  el.classList.remove(
+                      
+                      "icon-container-selected-scroll"
+                  )
+              );
+               if (projects.length > 8) {
+                   projectCardContainer.style.overflowX = "hidden";
+               } else {
+                   projectCardContainer.style.overflowX = "visible";
+               }
             projectCard.classList.add("selected-project");
             activeProjectId = project.projectId;
             let projectLibrary = JSON.parse(
@@ -139,7 +162,12 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
                     renderToDos(projectLibrary[i].toDos);
                 }
             }
-            iconContainer.classList.add("icon-container-selected");
+            
+            if (projects.length > 8) {
+                iconContainer.classList.add("icon-container-selected-scroll");
+            } else {
+         iconContainer.classList.add("icon-container-selected");
+            }
         };
 
         projectCard.classList =
@@ -167,7 +195,7 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
         const iconContainer = document.createElement("div");
         iconContainer.classList =
             project.projectId == activeProjectId
-                ? "icon-container icon-container-selected"
+                ? `icon-container ${projects.length > 8 ? "icon-container-selected-scroll" : "icon-container-selected"}`
                 : "icon-container";
         projectCard.appendChild(iconContainer);
         const editAndTrashContainer = document.createElement("div");
@@ -239,14 +267,18 @@ const editProjectName = (
         for (let i = 0; i < projectLibrary.length; i++) {
             if (projectLibrary[i].projectId === project.projectId) {
                 projectLibrary[i].projectName = editNameInput.value;
-            activeProjectId = projectLibrary[i].projectId;
-            localStorage.setItem(
-                "projectLibrary",
-                JSON.stringify(projectLibrary)
-            );
-            renderProjects(projectLibrary, "edit", projectLibrary[i].projectId);
+                activeProjectId = projectLibrary[i].projectId;
+                localStorage.setItem(
+                    "projectLibrary",
+                    JSON.stringify(projectLibrary)
+                );
+                renderProjects(
+                    projectLibrary,
+                    "edit",
+                    projectLibrary[i].projectId
+                );
+            }
         }
-    }
     };
     editNameContainer.appendChild(editNameInput);
     editNameContainer.appendChild(saveChanges);
