@@ -1,7 +1,9 @@
-import { renderProjects, renderToDos } from "./renderToDos";
+import { renderProjects } from "./renderProjects";
+import { renderToDos } from "./renderToDos";
 const checkForStorage = () => {
     if (typeof Storage !== "undefined") {
         console.log("Code for localStorage/sessionStorage.");
+           localStorage.setItem("activeProjectId", JSON.stringify(""));
         let projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
         if (projectLibrary.length < 1) {
             projectLibrary = [
@@ -54,6 +56,7 @@ const checkForStorage = () => {
                     ],
                 },
             ];
+         
             localStorage.setItem(
                 "projectLibrary",
                 JSON.stringify(projectLibrary)

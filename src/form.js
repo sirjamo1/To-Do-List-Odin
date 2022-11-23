@@ -1,5 +1,5 @@
-import { getFormData } from "./renderToDos";
-// NEED TO : make global opacity form style, append all form to it
+import { getFormData } from "./getFormData";
+
 export default function form(appContainer) {
     const opacityContainer = document.createElement("div");
     opacityContainer.classList.add("opacity-container");

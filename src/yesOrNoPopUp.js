@@ -1,5 +1,5 @@
-import { renderProjects, renderToDos } from "./renderToDos";
-
+import { renderProjects } from "./renderProjects";
+import { renderToDos } from "./renderToDos";
 const yesOrNoPopUp = (
     project,
     parentNode,
@@ -7,14 +7,6 @@ const yesOrNoPopUp = (
     cardContainer,
     projectLibrary
 ) => {
-    console.log(
-        project,
-        { parentNode },
-        { card },
-        { cardContainer },
-        { projectLibrary }
-    );
-    console.log(!project.toDos);
     const opacityContainer = document.createElement("div");
     opacityContainer.classList.add("opacity-container");
     const popUpContainer = document.createElement("div");
@@ -28,13 +20,11 @@ const yesOrNoPopUp = (
     yesButton.classList.add("pop-up-yes");
     yesButton.innerHTML = "Yes";
     yesButton.onclick = () => {
-        console.log(cardContainer, card);
         parentNode.removeChild(opacityContainer);
         if (!project.toDos) {
             for (let i = 0; i < projectLibrary.length; i++) {
                 for (let j = 0; j < projectLibrary[i].toDos.length; j++) {
                     if (projectLibrary[i].toDos[j].toDoId == project.toDoId) {
-                        console.log(projectLibrary[i].toDos[j]);
                         projectLibrary[i].toDos.splice(j, 1);
                         localStorage.setItem(
                             "projectLibrary",
@@ -65,7 +55,6 @@ const yesOrNoPopUp = (
     noButton.innerHTML = "No";
     noButton.onclick = () => {
         parentNode.removeChild(opacityContainer);
-        console.log("No");
     };
     popUpContainer.appendChild(noButton);
     opacityContainer.appendChild(popUpContainer);

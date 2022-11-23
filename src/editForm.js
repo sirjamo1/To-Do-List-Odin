@@ -1,8 +1,8 @@
-import { getEditFormData } from "./renderToDos";
+import { getEditFormData } from "./getEditFormData";
 
 export default function editForm(todo, appContainer) {
-     const opacityContainer = document.createElement("div");
-     opacityContainer.classList.add("opacity-container");
+    const opacityContainer = document.createElement("div");
+    opacityContainer.classList.add("opacity-container");
     const formContainer = document.createElement("form");
     formContainer.id = "form-container";
     formContainer.style.display = "grid";
@@ -56,38 +56,36 @@ export default function editForm(todo, appContainer) {
     const priorityLow = document.createElement("option");
     priorityLow.value = "Low";
     priorityLow.innerHTML = "Low";
-    todo.priority == "Low"
-        ? (priorityLow.selected = "selected")
-        : priorityLow;
+    todo.priority == "Low" ? (priorityLow.selected = "selected") : priorityLow;
     prioritySelect.appendChild(priorityLow);
     formContainer.appendChild(prioritySelect);
     const formButton = document.createElement("button");
     formButton.id = "form-submit-button";
     formButton.type = "submit";
     formButton.innerHTML = "Save";
-    formButton.onclick = () => {
+    formButton.onclick = (e) => {
         getEditFormData(
             titleInput.value,
             descriptionInput.value,
             dueDateInput.value,
-            prioritySelect.value,      
+            prioritySelect.value,
             todo.projectId,
             todo.toDoId
         );
         formContainer.reset();
-        appContainer.removeChild(opacityContainer)
+        appContainer.removeChild(opacityContainer);
         return false;
     };
     const cancelButton = document.createElement("button");
     cancelButton.id = "cancel-button";
-    cancelButton.innerHTML = "X"
+    cancelButton.innerHTML = "X";
     cancelButton.onclick = () => {
         appContainer.removeChild(opacityContainer);
-        return false
-    }
-    formContainer.appendChild(cancelButton)
+        return false;
+    };
+    formContainer.appendChild(cancelButton);
     formContainer.appendChild(formButton);
-    opacityContainer.appendChild(formContainer)
+    opacityContainer.appendChild(formContainer);
 
     return opacityContainer;
 }

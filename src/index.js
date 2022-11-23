@@ -2,7 +2,7 @@ import _ from "lodash";
 import "./style.css";
 import sidebar from "./sidebar";
 import { checkForStorage } from "./checkForStorage";
-import { renderProjects } from "./renderToDos";
+import { renderProjects } from "./renderProjects";
 
 function component() {
     const appContainer = document.createElement("div");
