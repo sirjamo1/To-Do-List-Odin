@@ -5,7 +5,7 @@ const checkForStorage = () => {
         console.log("Code for localStorage/sessionStorage.");
            localStorage.setItem("activeProjectId", JSON.stringify(""));
         let projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
-        if (projectLibrary.length < 1) {
+        if (projectLibrary == null || projectLibrary.length < 1) {
             projectLibrary = [
                 {
                     projectName: "Project 1",
