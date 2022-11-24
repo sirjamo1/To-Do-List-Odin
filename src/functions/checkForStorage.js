@@ -3,9 +3,9 @@ import { renderToDos } from "../renders/renderToDos";
 const checkForStorage = () => {
     if (typeof Storage !== "undefined") {
         console.log("Code for localStorage/sessionStorage.");
-           localStorage.setItem("activeProjectId", JSON.stringify(""));
+        localStorage.setItem("activeProjectId", JSON.stringify(""));
         let projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
-        if (projectLibrary.length < 1) {
+        if (projectLibrary == null || projectLibrary.length < 1) {
             projectLibrary = [
                 {
                     projectName: "Project 1",
@@ -92,16 +92,16 @@ const checkForStorage = () => {
                     ],
                 },
             ];
-         
+
             localStorage.setItem(
                 "projectLibrary",
                 JSON.stringify(projectLibrary)
             );
             renderProjects(projectLibrary);
-            renderToDos(projectLibrary[0].toDos)
+            renderToDos(projectLibrary[0].toDos);
         } else {
-          renderProjects(projectLibrary);
-          renderToDos(projectLibrary[0].toDos)
+            renderProjects(projectLibrary);
+            renderToDos(projectLibrary[0].toDos);
         }
     } else {
         console.log("Sorry! No Web Storage support..");
