@@ -1,8 +1,8 @@
-import trashBin from "./assets/icons/trash-bin.png";
-import editIcon from "./assets/icons/edit-icon.png";
-import completedIcon from "./assets/icons/completed-icon.png";
-import { yesOrNoPopUp } from "./yesOrNoPopUp";
-import editForm from "./editForm";
+import trashBin from "../assets/icons/trash-bin.png";
+import editIcon from "../assets/icons/edit-icon.png";
+import completedIcon from "../assets/icons/completed-icon.png";
+import { yesOrNoPopUp } from "../popupForms/yesOrNoPopUp";
+import editForm from "../popupForms/editForm";
 
 const renderToDos = (toDoArray, newEditDelete, newEditDeleteId) => {
     console.log(toDoArray)
@@ -85,7 +85,7 @@ const addRemoveLineThrough = (projectLibrary, toDoId) => {
                     "projectLibrary",
                     JSON.stringify(projectLibrary)
                 );
-                renderToDo(projectLibrary[i].toDos);
+                renderToDos(projectLibrary[i].toDos);
             }
         }
     }

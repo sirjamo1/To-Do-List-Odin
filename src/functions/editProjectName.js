@@ -1,4 +1,4 @@
-import { renderProjects } from "./renderProjects";
+import { renderProjects } from "../renders/renderProjects";
 
 const editProjectName = (
     projectCard,

@@ -1,10 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
 * {
     margin: 0;
     padding: 0;
-     font-family: 'Patrick Hand', cursive;
+    font-family: "Patrick Hand", cursive;
+    letter-spacing: 1px;
 }
 
 html,
@@ -62,7 +62,7 @@ body {
 .add-project-text {
     cursor: pointer;
     text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
-    font-family: 'Patrick Hand', cursive;
+    font-family: "Patrick Hand", cursive;
 }
 
 .add-project-input {
@@ -88,8 +88,8 @@ body {
 /*👉SIDEBAR---Project-Cards👈*/
 #project-card-container {
     width: 100%;
-/* overflow-x:visible; */
-direction: rtl;
+    /* overflow-x:visible; */
+    direction: rtl;
 }
 .project-card {
     justify-content: space-between;
@@ -395,22 +395,19 @@ direction: rtl;
 /*👉 CUSTOM SCROLL BAR👈*/
 
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
-
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
 }
- 
 
 ::-webkit-scrollbar-thumb {
-  background: red; 
-  border-radius: 10px;
+    background: red;
+    border-radius: 10px;
 }
 
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000; 
+    background: #b30000;
 }

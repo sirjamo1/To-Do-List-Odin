@@ -1,4 +1,4 @@
-import { renderToDos } from "./renderToDos";
+import { renderToDos } from "../renders/renderToDos";
 
 const addRemoveLineThrough = (projectLibrary, toDoId) => {
     for (let i = 0; i < projectLibrary.length; i++) {

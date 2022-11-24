@@ -1,11 +1,11 @@
 import { renderToDos } from "./renderToDos";
-import plusButton from "./assets/icons/plus-button.png";
-import trashBin from "./assets/icons/trash-bin.png";
-import editIcon from "./assets/icons/edit-icon.png";
-import { yesOrNoPopUp } from "./yesOrNoPopUp";
-import { removeClass } from "./removeClass";
-import { editProjectName } from "./editProjectName";
-import form from "./form";
+import plusButton from "../assets/icons/plus-button.png";
+import trashBin from "../assets/icons/trash-bin.png";
+import editIcon from "../assets/icons/edit-icon.png";
+import { yesOrNoPopUp } from "../popupForms/yesOrNoPopUp";
+import { removeClass } from "../functions/removeClass";
+import { editProjectName } from "../functions/editProjectName";
+import form from "../popupForms/form";
 
 const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
     let activeProjectId = JSON.parse(localStorage.getItem("activeProjectId"));
@@ -53,10 +53,6 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
             localStorage.setItem(
                 "activeProjectId",
                 JSON.stringify(activeProjectId)
-            );
-            console.log(activeProjectId);
-            let projectLibrary = JSON.parse(
-                localStorage.getItem("projectLibrary")
             );
             if (projects.length > 8) {
                 iconContainer.classList.add("icon-container-selected-scroll");

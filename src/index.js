@@ -1,8 +1,8 @@
 import _ from "lodash";
 import "./style.css";
-import sidebar from "./sidebar";
-import { checkForStorage } from "./checkForStorage";
-import { renderProjects } from "./renderProjects";
+import sidebar from "./renders/sidebar";
+import { checkForStorage } from "./functions/checkForStorage";
+import { renderProjects } from "./renders/renderProjects";
 
 function component() {
     const appContainer = document.createElement("div");

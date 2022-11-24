@@ -1,4 +1,4 @@
-import { renderToDos } from "./renderToDos";
+import { renderToDos } from "../renders/renderToDos";
 
 
 class ToDo {

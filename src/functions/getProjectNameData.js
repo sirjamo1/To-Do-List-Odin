@@ -1,5 +1,5 @@
-import { renderProjects } from "./renderProjects";
-import { renderToDos } from "./renderToDos";
+import { renderProjects } from "../renders/renderProjects";
+import { renderToDos } from "../renders/renderToDos";
 import { idGenerator } from "./idGenerator";
 
 class Project {
