@@ -4,7 +4,8 @@ import completedIcon from "./assets/icons/completed-icon.png";
 import { yesOrNoPopUp } from "./yesOrNoPopUp";
 import editForm from "./editForm";
 
-const renderToDo = (toDoArray, newEditDelete, newEditDeleteId) => {
+const renderToDos = (toDoArray, newEditDelete, newEditDeleteId) => {
+    console.log(toDoArray)
     const appContainer = document.getElementById("app-container");
     const toDoContainer = document.getElementById("to-do-container");
     while (toDoContainer.firstChild) {
@@ -89,4 +90,4 @@ const addRemoveLineThrough = (projectLibrary, toDoId) => {
         }
     }
 };
-export { renderToDo };
+export { renderToDos };

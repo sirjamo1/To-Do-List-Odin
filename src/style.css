@@ -1,6 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+     font-family: 'Patrick Hand', cursive;
 }
 
 html,
@@ -58,6 +62,7 @@ body {
 .add-project-text {
     cursor: pointer;
     text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
+    font-family: 'Patrick Hand', cursive;
 }
 
 .add-project-input {

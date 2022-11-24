@@ -6,7 +6,6 @@ import { yesOrNoPopUp } from "./yesOrNoPopUp";
 import { removeClass } from "./removeClass";
 import { editProjectName } from "./editProjectName";
 import form from "./form";
-//editprojectname
 
 const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
     let activeProjectId = JSON.parse(localStorage.getItem("activeProjectId"));
@@ -55,20 +54,16 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
                 "activeProjectId",
                 JSON.stringify(activeProjectId)
             );
+            console.log(activeProjectId);
             let projectLibrary = JSON.parse(
                 localStorage.getItem("projectLibrary")
             );
-            for (let i = 0; i < projectLibrary.length; i++) {
-                if (projectLibrary[i].projectId == activeProjectId) {
-                    renderToDos(projectLibrary[i].toDos);
-                }
-            }
-
             if (projects.length > 8) {
                 iconContainer.classList.add("icon-container-selected-scroll");
             } else {
                 iconContainer.classList.add("icon-container-selected");
             }
+            renderToDos(project.toDos);
         };
 
         projectCard.classList =
@@ -113,7 +108,6 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
             let projectLibrary = JSON.parse(
                 localStorage.getItem("projectLibrary")
             );
-
             editProjectName(
                 projectCard,
                 projectCardTitleContainer,
@@ -122,7 +116,6 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
                 projectLibrary
             );
         };
-
         editAndTrashContainer.appendChild(projectEditName);
         const projectTrashBin = new Image();
         projectTrashBin.src = trashBin;
