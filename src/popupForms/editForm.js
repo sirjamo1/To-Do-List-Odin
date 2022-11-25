@@ -63,7 +63,7 @@ export default function editForm(todo, appContainer) {
     formButton.id = "form-submit-button";
     formButton.type = "submit";
     formButton.innerHTML = "Save";
-    formButton.onclick = (e) => {
+    formButton.onclick = () => {
         getEditFormData(
             titleInput.value,
             descriptionInput.value,
@@ -76,6 +76,21 @@ export default function editForm(todo, appContainer) {
         appContainer.removeChild(opacityContainer);
         return false;
     };
+    formContainer.addEventListener("keypress", (e) => {
+        if (e.keyCode == 13) {
+              getEditFormData(
+            titleInput.value,
+            descriptionInput.value,
+            dueDateInput.value,
+            prioritySelect.value,
+            todo.projectId,
+            todo.toDoId
+        );
+        formContainer.reset();
+        appContainer.removeChild(opacityContainer);
+        return false;
+        }
+    })
     const cancelButton = document.createElement("button");
     cancelButton.id = "cancel-button";
     cancelButton.innerHTML = "X";

@@ -55,6 +55,12 @@ const changeChildNode = (addProjectContainer) => {
 };
 const replaceTextWithInput = () => {
     const projectNameInput = document.createElement("input");
+    projectNameInput.addEventListener("keypress", (e) => {
+        if (e.keyCode == 13) {
+            let addProjectsContainer = document.getElementById("add-project-container")
+        changeChildNode(addProjectsContainer)
+        }
+    })
     projectNameInput.classList.add("add-project-input");
     projectNameInput.placeholder = "Project name...";
     return projectNameInput;

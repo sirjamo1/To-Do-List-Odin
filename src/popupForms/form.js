@@ -29,9 +29,9 @@ export default function form(appContainer) {
     dueDateInput.type = "date";
     dueDateInput.id = "due-date";
     formContainer.appendChild(dueDateInput);
-    const priorityLabel = document.createElement("label")
-    priorityLabel.innerHTML = "Priority level"
-    formContainer.appendChild(priorityLabel)
+    const priorityLabel = document.createElement("label");
+    priorityLabel.innerHTML = "Priority level";
+    formContainer.appendChild(priorityLabel);
     const prioritySelect = document.createElement("select");
     prioritySelect.id = "priority";
     prioritySelect.name = "priority";
@@ -60,19 +60,32 @@ export default function form(appContainer) {
             prioritySelect.value
         );
         formContainer.reset();
-        appContainer.removeChild(opacityContainer)
+        appContainer.removeChild(opacityContainer);
         return false;
     };
-      const cancelButton = document.createElement("button");
-      cancelButton.id = "cancel-button";
-      cancelButton.innerHTML = "X";
-      cancelButton.onclick = () => {
-          appContainer.removeChild(opacityContainer);
-          return false;
-      };
-      formContainer.appendChild(cancelButton)
+    formContainer.addEventListener("keypress", (e) => {
+        if (e.keyCode == 13) {
+            getFormData(
+                titleInput.value,
+                descriptionInput.value,
+                dueDateInput.value,
+                prioritySelect.value
+            );
+            formContainer.reset();
+            appContainer.removeChild(opacityContainer);
+            return false;
+        }
+    });
+    const cancelButton = document.createElement("button");
+    cancelButton.id = "cancel-button";
+    cancelButton.innerHTML = "X";
+    cancelButton.onclick = () => {
+        appContainer.removeChild(opacityContainer);
+        return false;
+    };
+    formContainer.appendChild(cancelButton);
     formContainer.appendChild(formButton);
-    opacityContainer.appendChild(formContainer)
+    opacityContainer.appendChild(formContainer);
 
     return opacityContainer;
 }

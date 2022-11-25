@@ -11,7 +11,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/sirjamo1/To-Do-List-Odin">
+  <a href="https://github.com/sirjamo1.io/To-Do-List-Odin">
     <img src="src/assets/images/to-do-list-logo.png"  alt="Logo" width="80" height="80" style="background-color:rgb(48, 235, 241); border-radius: 6px">
   </a>
 
@@ -23,7 +23,7 @@
     <a href="https://github.com/sirjamo1/To-Do-List-Odin"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/sirjamo1/To-Do-List-Odin">View Demo</a>
+    <a href="https://github.com/sirjamo1.io/To-Do-List-Odin">View Demo</a>
     ·
     <a href="https://github.com/sirjamo1/To-Do-List-Odin/issues">Report Bug</a>
     ·
@@ -81,6 +81,10 @@ To Do List was built for The Odin Project.
 
 ## Getting Started
 
+Click the icon for live preview
+ <a href="https://github.com/sirjamo1.io/To-Do-List-Odin">
+    <img src="src/assets/images/to-do-list-logo.png"  alt="Logo" width="80" height="80" style="background-color:rgb(48, 235, 241); border-radius: 6px">
+  </a>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
