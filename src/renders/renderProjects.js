@@ -128,7 +128,12 @@ const renderProjects = (projects, newEditDelete, newEditDeleteId) => {
       } else {
         iconContainer.classList.add('icon-container-selected');
       }
-      renderToDos(project.toDos);
+      const projectLibrary = JSON.parse(localStorage.getItem('projectLibrary'));
+      for (let i = 0; i < projectLibrary.length; i += 1) {
+        if (projectLibrary[i].projectId === activeProjectId) {
+          renderToDos(projectLibrary[i].toDos);
+        }
+      }
     };
     iconContainer.appendChild(addCardButton);
   });

@@ -1,6 +1,6 @@
 import toDoLogo from '../assets/images/to-do-list-logo.png';
 import plusButton from '../assets/icons/plus-button.png';
-import { getProjectNameData } from '../functions/getProjectNameData';
+import getProjectNameData from '../functions/getProjectNameData';
 
 export default function sidebar() {
   const sidebarContainer = document.createElement('div');

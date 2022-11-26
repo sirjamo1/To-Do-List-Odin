@@ -1,5 +1,5 @@
-import { renderToDos } from '../renders/renderToDos';
-import { idGenerator } from './idGenerator';
+import renderToDos from '../renders/renderToDos';
+import idGenerator from './idGenerator';
 
 class ToDo {
   constructor(title, description, dueDate, priority, projectId, toDoId) {
