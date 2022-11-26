@@ -1,6 +1,6 @@
 const removeClass = (el, classToRemove) => {
-    for (let i = 0; i < el.childNodes.length; i++) {
-        el.childNodes[i].classList.remove(classToRemove);
-    }
+  for (let i = 0; i < el.childNodes.length; i += 1) {
+    el.childNodes[i].classList.remove(classToRemove);
+  }
 };
-export {removeClass}
+export default removeClass;

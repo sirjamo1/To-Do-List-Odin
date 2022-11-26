@@ -1,4 +1,2 @@
-const idGenerator = () => {
-    return Math.floor(Math.random() * 1000000);
-};
-export {idGenerator}
+const idGenerator = () => Math.floor(Math.random() * 1000000);
+export default idGenerator;

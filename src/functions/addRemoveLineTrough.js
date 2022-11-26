@@ -1,18 +1,18 @@
-import { renderToDos } from "../renders/renderToDos";
+import { renderToDos } from '../renders/renderToDos';
 
 const addRemoveLineThrough = (projectLibrary, toDoId) => {
-    for (let i = 0; i < projectLibrary.length; i++) {
-        for (let j = 0; j < projectLibrary[i].toDos.length; j++) {
-            if (projectLibrary[i].toDos[j].toDoId == toDoId) {
-                projectLibrary[i].toDos[j].completed =
-                    !projectLibrary[i].toDos[j].completed;
-                localStorage.setItem(
-                    "projectLibrary",
-                    JSON.stringify(projectLibrary)
-                );
-                renderToDos(projectLibrary[i].toDos);
-            }
-        }
+  const copyOfLibrary = projectLibrary;
+  for (let i = 0; i < copyOfLibrary.length; i += 1) {
+    for (let j = 0; j < copyOfLibrary[i].toDos.length; j += 1) {
+      if (copyOfLibrary[i].toDos[j].toDoId === toDoId) {
+        copyOfLibrary[i].toDos[j].completed = !projectLibrary[i].toDos[j].completed;
+        localStorage.setItem(
+          'projectLibrary',
+          JSON.stringify(copyOfLibrary),
+        );
+        renderToDos(copyOfLibrary[i].toDos);
+      }
     }
+  }
 };
-export {addRemoveLineThrough}
+export default { addRemoveLineThrough };
