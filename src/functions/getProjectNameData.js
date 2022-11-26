@@ -1,6 +1,6 @@
-import { renderProjects } from '../renders/renderProjects';
-import { renderToDos } from '../renders/renderToDos';
-import { idGenerator } from './idGenerator';
+import renderProjects from '../renders/renderProjects';
+import renderToDos from '../renders/renderToDos';
+import idGenerator from './idGenerator';
 
 class Project {
   constructor(projectName) {

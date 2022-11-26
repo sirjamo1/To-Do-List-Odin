@@ -1,5 +1,5 @@
-import { renderToDos } from '../renders/renderToDos';
-import { idGenerator } from './idGenerator';
+import renderToDos from '../renders/renderToDos';
+import idGenerator from './idGenerator';
 
 class ToDo {
   constructor(title, description, dueDate, priority, projectId, toDoId) {
@@ -30,11 +30,13 @@ const getFormData = (title, description, dueDate, priority) => {
           projectLibrary[i].projectId,
         );
         projectLibrary[i].toDos.push(newToDo);
-
+        localStorage.setItem(
+          'projectLibrary',
+          JSON.stringify(projectLibrary),
+        );
         renderToDos(projectLibrary[i].toDos, 'new', newToDo.toDoId);
       }
     }
-    localStorage.setItem('projectLibrary', JSON.stringify(projectLibrary));
   }
 };
 export default getFormData;
