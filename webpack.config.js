@@ -10,7 +10,7 @@ module.exports = {
     devtool: "inline-source-map",
     plugins: [
         new HtmlWebpackPlugin({
-            title: "To Do List",     
+            title: "To Do List",
         }),
         new FaviconsWebpackPlugin("./src/assets/favicon/to-do-list-logo.png"),
     ],
@@ -32,6 +32,18 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: "asset/resource",
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            ["@babel/preset-env", { targets: "defaults" }],
+                        ],
+                    },
+                },
             },
         ],
     },

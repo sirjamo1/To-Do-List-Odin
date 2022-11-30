@@ -15,4 +15,4 @@ const addRemoveLineThrough = (projectLibrary, toDoId) => {
     }
   }
 };
-export default { addRemoveLineThrough };
+export default addRemoveLineThrough;
