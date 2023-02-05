@@ -3,6 +3,7 @@ import plusButton from '../assets/icons/plus-button.png';
 import getProjectNameData from '../functions/getProjectNameData';
 
 export default function sidebar() {
+
   const sidebarContainer = document.createElement('div');
   sidebarContainer.id = 'sidebar-container';
   const toDoLogoImg = new Image();
@@ -17,7 +18,9 @@ export default function sidebar() {
   plusButtonIcon.id = 'sidebar-plus-button';
   plusButtonIcon.src = plusButton;
   plusButtonIcon.onclick = () => {
+    console.log('plus clicked')
     changeChildNode(addProjectContainer);
+     console.log("plus after change child");
   };
   addProjectContainer.appendChild(plusButtonIcon);
   const projectCardContainer = document.createElement('div');

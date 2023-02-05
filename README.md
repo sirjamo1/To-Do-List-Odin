@@ -63,6 +63,7 @@ To Do List was built for The Odin Project.
 -   Fully responsive layout.
 -   Uses webPack.
 -   Uses Modules.
+-   UPDATE: Now uses firebase as back end
 
 <img src="src/assets/screenshots/projectOneShot.png" alt="Screen shot one" height="260" >
 <img src="src/assets/screenshots/addProjectShot.png" alt="Screen shot two" height="260">

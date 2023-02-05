@@ -1,38 +1,33 @@
 import renderProjects from '../renders/renderProjects';
+import { initializeApp } from "firebase/app";
+import { config } from "../firebase.config";
+import {
+    getFirestore,
+    doc,
+    updateDoc,
+} from "firebase/firestore";
 
-const editProjectName = (
+const editProjectName =  (
   projectCard,
   projectCardTitleContainer,
   project,
   iconContainer,
-  projectLibrary,
 ) => {
-  const copyOfProjectLibrary = projectLibrary;
+      initializeApp(config);
+      const db = getFirestore();
+  const projectRef = doc(db, "projects", `${project.projectId}`)
   const editNameContainer = document.createElement('div');
   editNameContainer.classList.add('edit-name-container');
   const editNameInput = document.createElement('input');
   editNameInput.value = projectCardTitleContainer.firstChild.innerHTML;
-  editNameInput.onclick = (event) => {
-    event.stopPropagation();
-  };
   const saveChanges = document.createElement('button');
   saveChanges.innerHTML = 'save';
-  saveChanges.onclick = (event) => {
+  saveChanges.onclick = async (event) => {
     event.stopPropagation();
-    for (let i = 0; i < copyOfProjectLibrary.length; i += 1) {
-      if (copyOfProjectLibrary[i].projectId === project.projectId) {
-        copyOfProjectLibrary[i].projectName = editNameInput.value;
-        localStorage.setItem(
-          'projectLibrary',
-          JSON.stringify(copyOfProjectLibrary),
-        );
-        renderProjects(
-          copyOfProjectLibrary,
-          'edit',
-          copyOfProjectLibrary[i].projectId,
-        );
-      }
-    }
+    await updateDoc(projectRef, {
+        projectName: editNameInput.value,
+    });
+        renderProjects();
   };
   editNameContainer.appendChild(editNameInput);
   editNameContainer.appendChild(saveChanges);

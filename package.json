@@ -29,6 +29,7 @@
         "webpack-cli": "^4.10.0"
     },
     "dependencies": {
+        "firebase": "^9.16.0",
         "lodash": "^4.17.21"
     }
 }
